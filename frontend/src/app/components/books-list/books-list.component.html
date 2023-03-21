@@ -5,9 +5,16 @@
       <mat-nav-list *ngIf="(books$ | async) as books">
         <a mat-list-item *ngFor="let book of books.content" [routerLink]="['/books', book.id]">
           {{book.title}}
+          Author: {{book.author}}
+          {{book.year}}
         </a>
       </mat-nav-list>
     </mat-card-content>
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="isPreviousDisabled()">Previous</button>
+      <button (click)="nextPage()" [disabled]="isNextDisabled()">Next</button>
+      {{totalPages}}
+    </div>
   </mat-card>
 </div>
 

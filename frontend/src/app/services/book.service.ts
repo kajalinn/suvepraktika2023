@@ -20,7 +20,11 @@ export class BookService {
 
   getBooks(filter: Partial<PageRequest>): Observable<Page<Book>> {
     const url = this.baseUrl + '/getBooks';
-    const params = RestUtil.buildParamsFromPageRequest(filter);
+    const params = RestUtil.buildParamsFromPageRequest({
+      ...filter,
+      pageIndex: filter.pageIndex ?? 0, // set default value for pageIndex
+      pageSize: filter.pageSize ?? 20 // set default value for pageSize
+    });
     return this.http.get<Page<Book>>(url, {params});
   }
 
