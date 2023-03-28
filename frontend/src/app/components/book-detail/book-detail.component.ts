@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Pipe} from '@angular/core';
 import { BookService } from '../../services/book.service';
 import { Book } from '../../models/book';
-import { Observable } from 'rxjs';
+import {filter, Observable} from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 

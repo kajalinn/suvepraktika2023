@@ -2,3 +2,47 @@
   max-width: 1024px;
   margin: 2em auto;
 }
+
+.book {
+  margin: 20px 0;
+}
+
+.paper-header{
+  display: inline-grid;
+}
+
+.available {
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.borrowed {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+//.tr-detail-desc{
+//  display: grid;
+//  grid-template-columns: 16fr 6fr 6fr;
+//  justify-content: space-evenly;
+//
+//}
+//
+//.tr-detail-content{
+//  max-width: 1024px;
+//  height: 100%;
+//  display: grid;
+//  grid-template-columns: 16fr 6fr 6fr;
+//  justify-content: space-evenly;
+//}
+
+

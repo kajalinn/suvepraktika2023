@@ -19,13 +19,13 @@ import {CheckoutDetailComponent} from "./components/checkout-detail/checkout-det
     CheckoutsListComponent,
     CheckoutDetailComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

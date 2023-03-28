@@ -20,7 +20,11 @@ export class CheckoutService {
 
   getCheckouts(filter: Partial<PageRequest>): Observable<Page<Checkout>> {
     const url = this.baseUrl + '/getCheckouts';
-    const params = RestUtil.buildParamsFromPageRequest(filter);
+    const params = RestUtil.buildParamsFromPageRequest({
+      ...filter,
+      pageIndex: filter.pageIndex ?? 0, // set default value for pageIndex
+      pageSize: filter.pageSize ?? 10,
+    });
     return this.http.get<Page<Checkout>>(url, {params});
   }
 

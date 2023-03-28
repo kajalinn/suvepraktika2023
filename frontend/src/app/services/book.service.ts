@@ -23,7 +23,10 @@ export class BookService {
     const params = RestUtil.buildParamsFromPageRequest({
       ...filter,
       pageIndex: filter.pageIndex ?? 0, // set default value for pageIndex
-      pageSize: filter.pageSize ?? 20 // set default value for pageSize
+      pageSize: filter.pageSize ?? 10,
+      //Todo
+      // sort: filter.sort, // add sort option for title, genre, and status
+      // direction: 'asc'// set default value for pageSize
     });
     return this.http.get<Page<Book>>(url, {params});
   }

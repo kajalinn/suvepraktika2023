@@ -1,20 +1,65 @@
-<div class="container mat-elevation-z4">
-  <mat-card>
-    <mat-card-title>Books</mat-card-title>
-    <mat-card-content>
-      <mat-nav-list *ngIf="(books$ | async) as books">
-        <a mat-list-item *ngFor="let book of books.content" [routerLink]="['/books', book.id]">
-          {{book.title}}
-          Author: {{book.author}}
-          {{book.year}}
-        </a>
-      </mat-nav-list>
-    </mat-card-content>
-    <div class="pagination">
-      <button (click)="previousPage()" [disabled]="isPreviousDisabled()">Previous</button>
-      <button (click)="nextPage()" [disabled]="isNextDisabled()">Next</button>
-      {{totalPages}}
-    </div>
-  </mat-card>
-</div>
 
+<div class="container mat-elevation-z4">
+
+  <div class="paper-header">
+    <mat-card-title>Books</mat-card-title>
+  </div>
+
+  <div *ngIf="books$ | async as books">
+
+    <div class="m-5">
+
+      <table class="table align-middle mb-0 bg-white" >
+
+        <thead class="bg-light">
+        <tr>
+          <th>Author</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Genre</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody *ngIf="books && books.content && books.content.length > 0">
+        <tr *ngFor="let book of books.content">
+          <td>
+              <div class="book element">
+                <p class="fw-bold mb-1">{{book.author}}</p>
+              </div>
+          </td>
+          <td>
+            <div class="book element">
+              <p class="fw-normal mb-1">{{book.title}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="book element">
+              <p class="fw-normal mb-1" [ngClass]="book.status === 'AVAILABLE' ? 'available' : 'borrowed'">{{book.status}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="book element ">
+              <p class="fw-normal mb-1">{{book.genre}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="element">
+              <a mat-raised-button class="fw-normal mb-1"  [routerLink]="['/books', book.id]">
+                Details
+              </a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+
+      <div class="pagination">
+        <button mat-button (click)="previousPage()" [disabled]="isPreviousDisabled()">Previous</button>
+        <button mat-button (click)="nextPage()" [disabled]="isNextDisabled()">Next</button>
+      </div>
+
+    </div>
+  </div>
+</div>
